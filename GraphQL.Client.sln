@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{47C98B55-08F1-4428-863E-2C5C876DEEFE}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		LICENSE.txt = LICENSE.txt
+		src\NewtonSoftJsonUnityVersions\v12.0.1\Newtonsoft.Json.dll = src\NewtonSoftJsonUnityVersions\v12.0.1\Newtonsoft.Json.dll
 		README.md = README.md
 		root.props = root.props
 	EndProjectSection
@@ -43,7 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".circleci", ".circleci", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{9413EC62-CDDE-4E77-9784-E1136EA5D1EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.Client.Sample", "samples\GraphQL.Client.Sample\GraphQL.Client.Sample.csproj", "{B21E97C3-F328-473F-A054-A4BF272B63F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.Client.Sample", "samples\GraphQL.Client.Sample\GraphQL.Client.Sample.csproj", "{B21E97C3-F328-473F-A054-A4BF272B63F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

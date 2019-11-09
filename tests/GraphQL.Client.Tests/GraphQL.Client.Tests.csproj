@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<Import Project="../tests.props" />
@@ -9,11 +9,18 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="1.1.2" />
+	  <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\GraphQL.Client\GraphQL.Client.csproj" />
 		<ProjectReference Include="..\GraphQL.Common.Tests\GraphQL.Common.Tests.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="Newtonsoft.Json">
+	    <HintPath>..\..\..\..\graphql-repo\graphql-client\Newtonsoft.Json.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 	
 </Project>

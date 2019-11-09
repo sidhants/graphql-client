@@ -74,6 +74,26 @@ namespace GraphQL.Client.Http.Internal {
 		}
 
 		/// <summary>
+		/// Send a <see cref="GraphQLRequest"/> via POST
+		/// </summary>
+		/// <param name="request">The Request</param>
+		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+		/// <returns>The Response</returns>
+		public async Task<string> PostAsyncStringResponse(GraphQLRequest request, CancellationToken cancellationToken = default){
+			if (request == null) { throw new ArgumentNullException(nameof(request)); }
+			if (request.Query == null) { throw new ArgumentNullException(nameof(request.Query)); }
+
+			var graphQLString = JsonConvert.SerializeObject(request, this.Options.JsonSerializerSettings);
+			using (var httpContent = new StringContent(graphQLString))
+			{
+				httpContent.Headers.ContentType = this.Options.MediaType;
+				using (var httpResponseMessage = await this.HttpClient.PostAsync(this.Options.EndPoint, httpContent, cancellationToken).ConfigureAwait(false)){
+					return await httpResponseMessage.Content.ReadAsStringAsync();
+				}
+			}
+		}
+
+		/// <summary>
 		/// Reads the <see cref="HttpResponseMessage"/>
 		/// </summary>
 		/// <param name="httpResponseMessage">The Response</param>

@@ -13,7 +13,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
 		<PackageReference Include="System.Net.WebSockets.Client" Version="4.3.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="Newtonsoft.Json">
+	    <HintPath>..\..\..\..\graphql-repo\graphql-client\Newtonsoft.Json.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<!-- Allow method ReadAsAsync<T>
