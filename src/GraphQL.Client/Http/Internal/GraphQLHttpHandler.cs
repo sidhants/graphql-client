@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -79,7 +80,7 @@ namespace GraphQL.Client.Http.Internal {
 		/// <param name="request">The Request</param>
 		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
 		/// <returns>The Response</returns>
-		public async Task<string> PostAsyncStringResponse(GraphQLRequest request, CancellationToken cancellationToken = default){
+		public async Task<(HttpStatusCode, string)> PostAsyncHttp(GraphQLRequest request, CancellationToken cancellationToken = default){
 			if (request == null) { throw new ArgumentNullException(nameof(request)); }
 			if (request.Query == null) { throw new ArgumentNullException(nameof(request.Query)); }
 
@@ -88,7 +89,8 @@ namespace GraphQL.Client.Http.Internal {
 			{
 				httpContent.Headers.ContentType = this.Options.MediaType;
 				using (var httpResponseMessage = await this.HttpClient.PostAsync(this.Options.EndPoint, httpContent, cancellationToken).ConfigureAwait(false)){
-					return await httpResponseMessage.Content.ReadAsStringAsync();
+					string json = await httpResponseMessage.Content.ReadAsStringAsync();
+					return (httpResponseMessage.StatusCode, json);
 				}
 			}
 		}

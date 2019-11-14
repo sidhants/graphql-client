@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -106,8 +107,8 @@ namespace GraphQL.Client.Http {
 		public Task<GraphQLResponse> SendQueryAsync(GraphQLRequest request, CancellationToken cancellationToken = default) =>
 			this.graphQLHttpHandler.PostAsync(request, cancellationToken);
 
-		public Task<string> SendQueryAsyncStringResponse(GraphQLRequest request, CancellationToken cancellationToken = default) =>
-			this.graphQLHttpHandler.PostAsyncStringResponse(request, cancellationToken);
+		public Task<(HttpStatusCode, string)> SendQueryAsyncHttp(GraphQLRequest request, CancellationToken cancellationToken = default) =>
+			this.graphQLHttpHandler.PostAsyncHttp(request, cancellationToken);
 
 		public Task<GraphQLResponse> SendMutationAsync(string query, CancellationToken cancellationToken = default) =>
 			this.SendMutationAsync(new GraphQLRequest { Query = query }, cancellationToken);
